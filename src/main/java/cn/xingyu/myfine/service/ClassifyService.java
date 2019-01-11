@@ -20,5 +20,17 @@ public interface ClassifyService extends IService<Classify> {
      * 获取分类list
      * @return list
      */
-    List<Classify>  getClassifyList();
+    List<Classify> getClassifyList();
+
+    /**
+     * 获取一级分类
+     * @return list
+     */
+    List<Classify> getClassifyTypeOne();
+
+    /**
+     * 获取二级分类
+     * @return list
+     */
+    List<Classify> getClassifyTypeTwo();
 }

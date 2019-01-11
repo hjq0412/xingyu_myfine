@@ -22,7 +22,7 @@
                 <li>
                     <a href="index.html#"><i class="fa fa fa-globe"></i> <span class="nav-label">商品管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="productList.html">商品信息</a></li>
+                        <li><a href="/product/getProductAll.html">商品信息</a></li>
                         <li><a href="productAdd.html">录入商品</a>
                         </li>
                     </ul>
@@ -30,7 +30,7 @@
                 <li>
                     <a href="index.html#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">商品分类</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="classifyManage.html">分类管理</a>
+                        <li><a href="/classify/classifyList.html">分类管理</a>
                         </li>
                     </ul>
                 </li>

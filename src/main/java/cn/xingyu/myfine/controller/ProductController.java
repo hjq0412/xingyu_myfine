@@ -6,16 +6,15 @@ import cn.xingyu.myfine.pojo.Product;
 import cn.xingyu.myfine.service.ClassifyService;
 import cn.xingyu.myfine.service.ProductService;
 import cn.xingyu.myfine.util.JsonUtils;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,7 +27,7 @@ import java.util.List;
  * @author You
  * @since 2019-01-08
  */
-@RestController
+@Controller
 @RequestMapping("/product")
 public class ProductController {
 
@@ -37,7 +36,10 @@ public class ProductController {
      */
     @Resource(name = "proService")
     private ProductService productService;
-    @Autowired
+    /**
+     * 注入ClassifyService
+     */
+    @Resource(name = "classService")
     private ClassifyService classifyService;
 
     /**
@@ -51,6 +53,7 @@ public class ProductController {
      * @return json
      */
     @RequestMapping("/getNewProductFive.html")
+    @ResponseBody
     public Object getNewProductFive() {
         List<Product> list = productService.getNewProduct();
         //输出json信息
@@ -64,6 +67,7 @@ public class ProductController {
      * @return json
      */
     @RequestMapping("/getNewProductNotFive.html")
+    @ResponseBody
     public Object getNewProductNotFive() {
         List<Product> list = productService.getProductNotFive();
         //输出json信息
@@ -77,6 +81,7 @@ public class ProductController {
      * @return json
      */
     @RequestMapping("/getProductByBuyCounts.html")
+    @ResponseBody
     public Object getProductByBuyCounts() {
         List<Product> list = productService.getProductByBuyCounts();
         //输出json信息
@@ -91,6 +96,7 @@ public class ProductController {
      * @return json
      */
     @RequestMapping("/getProductById.html")
+    @ResponseBody
     public Object getProductById(String id) {
         Product product = productService.getProductById(id);
         //输出json信息
@@ -116,8 +122,8 @@ public class ProductController {
         //获取分类集合
         List<Classify> classifyList=classifyService.getClassifyList();
         //塞进model
-        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("classifyList",classifyList);
+        model.addAttribute("pageInfo", pageInfo);
         return "productList";
     }
 }
