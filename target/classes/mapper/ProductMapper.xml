@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.xingyu.myfine.mapper.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.xingyu.myfine.pojo.Product">
+        <id column="id" property="id" />
+        <result column="level1Id" property="level1Id" />
+        <result column="level2Id" property="level2Id" />
+        <result column="name" property="name" />
+        <result column="purchase" property="purchase" />
+        <result column="price" property="price" />
+        <result column="description" property="description" />
+        <result column="size" property="size" />
+        <result column="count" property="count" />
+        <result column="color" property="color" />
+        <result column="isDiscount" property="isDiscount" />
+        <result column="fileAddress" property="fileAddress" />
+        <result column="launchTime" property="launchTime" />
+        <result column="isDel" property="isDel" />
+        <result column="buyCounts" property="buyCounts" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, level1Id, level2Id, name, purchase, price, description, size, count, color, isDiscount, fileAddress, launchTime, isDel, buyCounts
+    </sql>
+
+</mapper>
