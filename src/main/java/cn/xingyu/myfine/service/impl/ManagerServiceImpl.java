@@ -46,22 +46,11 @@ public class ManagerServiceImpl extends ServiceImpl<ManagerMapper, Manager> impl
     @Override
     public Manager login(String code,String pwd) {
         Manager manager=new Manager();
-        //获取主体即获取当前管理员对象
-        Subject subject= SecurityUtils.getSubject();
-        //生成令牌(传入用户输入的账号和密码)
-        UsernamePasswordToken token = new UsernamePasswordToken(code,pwd);
-        //认证登录
-        try {
-            //这里会加载自定义的realm
-            subject.login(token);//把令牌放到login里面进行查询,如果查询账号和密码时候匹配,如果匹配就把user对象获取出来,失败就抛异常
-            //获取登录成功的用户对象
-            manager= (Manager) subject.getPrincipal();//从主体中获取用户
-        } catch (Exception e) {
-            //认证登录失败抛出异常 打印异常信息
-            logger.info(e.toString());
-            return null;
+        manager=manager.selectOne(new QueryWrapper<Manager>().eq("managerCode",code));
+        if (manager.getPassword().equals(pwd)){
+            return manager;
         }
-        return  manager;
+        return  null;
     }
 
     /**

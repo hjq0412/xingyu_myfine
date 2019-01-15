@@ -16,5 +16,13 @@
     <sql id="Base_Column_List">
         id, userId, addressId, createtime, orderNo, orderType
     </sql>
+    <select id="getOrderListByPay" resultMap="BaseResultMap">
+        SELECT * from `order` WHERE id in(select orderId from orderdetail
+        where isPay=#{isPay})
+    </select>
+    <select id="getOrdreListByDelivery" resultMap="BaseResultMap">
+        SELECT * from `order` WHERE id in(select orderId from orderdetail
+        where isDelivery=#{isDelivery})
+    </select>
 
 </mapper>

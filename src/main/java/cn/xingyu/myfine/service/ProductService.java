@@ -46,4 +46,18 @@ public interface ProductService extends IService<Product> {
      * @return list
      */
     List<Product> getProductList();
+
+    /**
+     * 新增商品
+     * @param product
+     * @return
+     */
+    boolean addProduct(Product product);
+
+    /**
+     * 修改商品信息
+     * @param product
+     * @return
+     */
+    boolean updateProduct(Product product);
 }

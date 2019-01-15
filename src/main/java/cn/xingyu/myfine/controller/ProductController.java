@@ -111,7 +111,7 @@ public class ProductController {
      * @return 逻辑字符串
      */
     @RequestMapping("/getProductAll.html")
-    public String getProductAll(@RequestParam(value = "index", defaultValue = "1") Integer index, Model model) {
+    public String getProductAll(@RequestParam(value = "pageIndex", defaultValue = "1") Integer index, Model model) {
         //开始分页 声明分页信息（当前页，每页记录数）
         //查询之前传入 当前页 和页面容量
         PageHelper.startPage(index, 10);
@@ -123,7 +123,7 @@ public class ProductController {
         List<Classify> classifyList=classifyService.getClassifyList();
         //塞进model
         model.addAttribute("classifyList",classifyList);
-        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("page", pageInfo);
         return "productList";
     }
 }

@@ -110,4 +110,29 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         List<Product> productList=product.selectAll();
         return productList;
     }
+
+    /**
+     * 新增商品
+     *
+     * @param product
+     * @return
+     */
+    @Override
+    public boolean addProduct(Product product) {
+        boolean flag=false;
+        flag=product.insert();
+        return flag;
+    }
+
+    /**
+     * 修改商品信息
+     * @param product
+     * @return
+     */
+    @Override
+    public boolean updateProduct(Product product) {
+        boolean flag=false;
+        flag=product.updateById();
+        return flag;
+    }
 }

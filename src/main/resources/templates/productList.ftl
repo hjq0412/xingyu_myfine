@@ -35,6 +35,8 @@
                     </div>
                 </div>
                 <div class="ibox-content">
+                <form action="/product/getProductAll.html" method="post">
+                    <input type="hidden" name="pageIndex" value="1" id="pageIndex"/>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -48,8 +50,8 @@
                         <th class="text-center">操作</th>
                     </tr>
                     </thead>
-                        <#if pageInfo?exists>
-                            <#list pageInfo.list as list>
+                        <#if page?exists>
+                            <#list page.list as list>
                         <tbody>
                         <tr>
                             <td class="text-center">${list.id}</td>
@@ -62,15 +64,16 @@
                                     </#if>
                                 </#list>
                             </td>
-                            <td class="text-center">${list.description}</td>
-                            <td class="text-center">${list.count}</td>
-                            <td class="text-center">${list.price}</td>
+                            <td class="text-center">${list.description!""}</td>
+                            <td class="text-center">${list.count!""}</td>
+                            <td class="text-center">${list.price!""}</td>
                             <td class="text-center"><a href="productUpdate.html">修改</a>|<a>删除</a></td>
                         </tr>
                         </tbody>
                             </#list>
-
                     </table>
+                        </form>
+                        <#include "common/page.ftl">
                         </#if>
                 </div>
             </div>
