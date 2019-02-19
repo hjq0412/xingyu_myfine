@@ -22,7 +22,7 @@ public interface OrderService extends IService<Order> {
     List<Order> getOrderList();
 
     /**
-     * 查询未 付款订单
+     * 查询未付款订单
      * @return 未付款订单list
      */
     List<Order> getOrderListByPay(Integer isPay);
@@ -32,6 +32,8 @@ public interface OrderService extends IService<Order> {
      * @return
      */
     List<Order> getOrdreListByDelivery(Integer isDelivery);
+
+
 
 
 

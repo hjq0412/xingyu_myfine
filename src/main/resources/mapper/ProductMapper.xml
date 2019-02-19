@@ -8,7 +8,6 @@
         <result column="level1Id" property="level1Id" />
         <result column="level2Id" property="level2Id" />
         <result column="name" property="name" />
-        <result column="purchase" property="purchase" />
         <result column="price" property="price" />
         <result column="description" property="description" />
         <result column="size" property="size" />
@@ -25,5 +24,10 @@
     <sql id="Base_Column_List">
         id, level1Id, level2Id, name, purchase, price, description, size, count, color, isDiscount, fileAddress, launchTime, isDel, buyCounts
     </sql>
+    <!--查询二级分类对应商品集合-->
+    <select id="getProListByLevel2Id" resultMap="BaseResultMap">
+        select * from product where level2Id=#{level2Id}
+    </select>
+
 
 </mapper>

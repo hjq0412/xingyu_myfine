@@ -2,14 +2,17 @@ package cn.xingyu.myfine.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+
 import java.time.LocalDate;
+
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author You
@@ -54,6 +57,18 @@ public class Order extends Model<Order> {
     @TableField("orderType")
     private Long orderType;
 
+    /**
+     * 用户昵称
+     */
+    private String userNickName;
+
+
+    /**
+     * 收货地址
+     */
+    private String address;
+
+
     public Long getId() {
         return id;
     }
@@ -61,6 +76,7 @@ public class Order extends Model<Order> {
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getUserId() {
         return userId;
     }
@@ -68,6 +84,7 @@ public class Order extends Model<Order> {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
     public Long getAddressId() {
         return addressId;
     }
@@ -75,6 +92,7 @@ public class Order extends Model<Order> {
     public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
+
     public LocalDate getCreatetime() {
         return createtime;
     }
@@ -82,6 +100,7 @@ public class Order extends Model<Order> {
     public void setCreatetime(LocalDate createtime) {
         this.createtime = createtime;
     }
+
     public String getOrderNo() {
         return orderNo;
     }
@@ -89,12 +108,29 @@ public class Order extends Model<Order> {
     public void setOrderNo(String orderNo) {
         this.orderNo = orderNo;
     }
+
     public Long getOrderType() {
         return orderType;
     }
 
     public void setOrderType(Long orderType) {
         this.orderType = orderType;
+    }
+
+    public String getUserNickName() {
+        return userNickName;
+    }
+
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -105,12 +141,12 @@ public class Order extends Model<Order> {
     @Override
     public String toString() {
         return "Order{" +
-        "id=" + id +
-        ", userId=" + userId +
-        ", addressId=" + addressId +
-        ", createtime=" + createtime +
-        ", orderNo=" + orderNo +
-        ", orderType=" + orderType +
-        "}";
+                "id=" + id +
+                ", userId=" + userId +
+                ", addressId=" + addressId +
+                ", createtime=" + createtime +
+                ", orderNo=" + orderNo +
+                ", orderType=" + orderType +
+                "}";
     }
 }

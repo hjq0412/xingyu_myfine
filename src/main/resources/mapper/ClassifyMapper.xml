@@ -4,15 +4,29 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.xingyu.myfine.pojo.Classify">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="parentId" property="parentId" />
-        <result column="type" property="type" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parentId" property="parentId"/>
+        <result column="type" property="type"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, name, parentId, type
     </sql>
+    <!--查询不包含本身 是否存在父分类  即除了自己是否有其他的分类parentId为自己-->
+    <select id="existsChild" resultType="java.lang.Integer">
+        select COUNT(1) from classify
+        where  parentId=#{id} and id !=#{id}
+    </select>
+    <!--查询父级分类对应的子分类-->
+    <select id="getLevel1Children" resultMap="BaseResultMap">
+        select id,name from classify
+        where parentId=#{id}
+    </select>
+    <!--查询一级分类集合-->
+    <select id="getLevel1" resultMap="BaseResultMap">
+      SELECT id , name FROM classify WHERE TYPE = 1
+    </select>
 
 </mapper>

@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--suppress ALL -->
 <mapper namespace="cn.xingyu.myfine.mapper.OrderdetailMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.xingyu.myfine.pojo.Orderdetail">
-        <id column="id" property="id" />
-        <result column="orderId" property="orderId" />
-        <result column="productId" property="productId" />
-        <result column="productNum" property="productNum" />
-        <result column="total" property="total" />
-        <result column="isPay" property="isPay" />
-        <result column="isDelivery" property="isDelivery" />
-        <result column="integralVariation" property="integralVariation" />
+        <id column="id" property="id"/>
+        <result column="orderId" property="orderId"/>
+        <result column="productId" property="productId"/>
+        <result column="productNum" property="productNum"/>
+        <result column="total" property="total"/>
+        <result column="isPay" property="isPay"/>
+        <result column="isDelivery" property="isDelivery"/>
+        <result column="integralVariation" property="integralVariation"/>
+        <result column="userId" property="userId"/>
+        <result column="addressId" property="addressId"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, orderId, productId, productNum, total, isPay, isDelivery, integralVariation
     </sql>
+
+    <!--根据id查找对象-->
+    <select id="getOrderDetailById" resultType="cn.xingyu.myfine.dto.OrderDetailDto">
+        select detail.id,o.orderNo,p.`name` as productName,u.userNickName,a.address,a.phone,a.consignee,detail.productNum,detail.total,detail.integralVariation
+        from orderdetail  detail
+        join `order` o on detail.orderId=o.id
+        join  product p on  p.id =detail.productId
+        join  user u on u.id=detail.userId
+        join  address a on a.id =detail.addressId
+        where detail.orderId=#{id}
+    </select>
 
 </mapper>

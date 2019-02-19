@@ -16,7 +16,7 @@
                     </div>
 
                 </li>
-                <li class="active">
+                <li>
                     <a href="/index.html"><i class="fa fa-th-large"></i> <span class="nav-label">个人资料</span> </span></a>
                 </li>
                 <li>
@@ -47,17 +47,13 @@
                 <li>
                     <a href="index.html#"><i class="fa fa-edit"></i> <span class="nav-label">订单管理</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="form_basic.html">全部订单</a>
+                        <li><a href="/order/getOrderAll.html">全部订单</a>
                         </li>
-                        <li><a href="form_validate.html">已发货订单</a>
+                        <li><a href="/order/getOrderNoPay.html">待付款订单</a>
                         </li>
-                        <li><a href="form_advanced.html">待发货订单</a>
+                        <li><a href="/order/getOrderDelivery.html?isDelivery=1">已发货订单</a>
                         </li>
-                        <li><a href="form_wizard.html">待收货订单</a>
-                        </li>
-                        <li><a href="form_webuploader.html">待付款订单</a>
-                        </li>
-                        <li><a href="form_file_upload.html">待评价订单</a>
+                        <li><a href="/order/getOrderDelivery.html?isDelivery=2">待发货订单</a>
                         </li>
                     </ul>
                 </li>

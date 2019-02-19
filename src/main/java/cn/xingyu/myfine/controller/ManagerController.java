@@ -39,8 +39,7 @@ public class ManagerController {
     /**
      * 日志输出
      */
-    private Logger logger= LoggerFactory.getLogger(ManagerController.class);
-
+    private Logger logger = LoggerFactory.getLogger(ManagerController.class);
 
 
     /**
@@ -77,8 +76,6 @@ public class ManagerController {
     }
 
 
-
-
     /**
      * 根据管理员id 获取管理员对象
      *
@@ -104,13 +101,18 @@ public class ManagerController {
     @ResponseBody
     public Object checkCode(@RequestParam("code") String code) {
         Data data = new Data();
-        int count = managerService.getManagerByCode(code);
-        if (count > 0) {
-            data.setResult("failed");
-            data.setMessage("<span style='font:red'>该管理员CODE不可用</span>");
+        if (code == "") {
+            data.setResult("null");
+            data.setMessage("<span style='color:red'>该管理员CODE不可为空</span>");
         } else {
-            data.setResult("success");
-            data.setMessage("<span style='font:red'>该管理员CODE可以使用</span>");
+            int count = managerService.getManagerByCode(code);
+            if (count > 0) {
+                data.setResult("failed");
+                data.setMessage("<span style='color:red'>该管理员CODE不可用</span>");
+            } else {
+                data.setResult("success");
+                data.setMessage("<span style='color:red'>该管理员CODE可以使用</span>");
+            }
         }
         //日志输出响应的json
         logger.info(JsonUtils.objectToJson(data));
@@ -144,6 +146,7 @@ public class ManagerController {
             data.setResult("failed");
             data.setMessage("修改失败！");
         }
+
         //返回 将保存json结果的对象转换为json对象
         return JsonUtils.objectToJson(data);
     }

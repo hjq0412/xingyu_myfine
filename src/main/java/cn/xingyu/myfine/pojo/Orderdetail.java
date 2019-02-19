@@ -4,11 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author You
@@ -65,6 +66,32 @@ public class Orderdetail extends Model<Orderdetail> {
     @TableField("integralVariation")
     private Long integralVariation;
 
+    /**
+     * 用户id 外键
+     */
+    private Long userId;
+    /**
+     * 地址外键
+     */
+    private Long addressId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Long getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -72,6 +99,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getOrderId() {
         return orderId;
     }
@@ -79,6 +107,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
+
     public Long getProductId() {
         return productId;
     }
@@ -86,6 +115,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
+
     public Long getProductNum() {
         return productNum;
     }
@@ -93,6 +123,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setProductNum(Long productNum) {
         this.productNum = productNum;
     }
+
     public Double getTotal() {
         return total;
     }
@@ -100,6 +131,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setTotal(Double total) {
         this.total = total;
     }
+
     public Long getIsPay() {
         return isPay;
     }
@@ -107,6 +139,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setIsPay(Long isPay) {
         this.isPay = isPay;
     }
+
     public Long getIsDelivery() {
         return isDelivery;
     }
@@ -114,6 +147,7 @@ public class Orderdetail extends Model<Orderdetail> {
     public void setIsDelivery(Long isDelivery) {
         this.isDelivery = isDelivery;
     }
+
     public Long getIntegralVariation() {
         return integralVariation;
     }
@@ -130,14 +164,14 @@ public class Orderdetail extends Model<Orderdetail> {
     @Override
     public String toString() {
         return "Orderdetail{" +
-        "id=" + id +
-        ", orderId=" + orderId +
-        ", productId=" + productId +
-        ", productNum=" + productNum +
-        ", total=" + total +
-        ", isPay=" + isPay +
-        ", isDelivery=" + isDelivery +
-        ", integralVariation=" + integralVariation +
-        "}";
+                "id=" + id +
+                ", orderId=" + orderId +
+                ", productId=" + productId +
+                ", productNum=" + productNum +
+                ", total=" + total +
+                ", isPay=" + isPay +
+                ", isDelivery=" + isDelivery +
+                ", integralVariation=" + integralVariation +
+                "}";
     }
 }

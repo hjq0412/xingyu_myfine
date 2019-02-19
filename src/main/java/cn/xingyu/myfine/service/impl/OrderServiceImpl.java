@@ -19,7 +19,7 @@ import java.util.List;
  * @author You
  * @since 2019-01-08
  */
-@Service
+@Service("orService")
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
 
@@ -32,8 +32,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
      */
     @Override
     public List<Order> getOrderList() {
-        Order order= new Order();
-        List<Order> list= order.selectAll();
+        List<Order> list= orderMapper.getAllOrder();
         return list;
     }
 
@@ -48,10 +47,11 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     /**
      * 查询已 未 发货订单
-     * @return
+     * @return list
      */
     @Override
     public List<Order> getOrdreListByDelivery(Integer isDelivery) {
         return orderMapper.getOrdreListByDelivery(isDelivery);
     }
+
 }

@@ -43,4 +43,26 @@ public interface ClassifyService extends IService<Classify> {
      */
     boolean  addClassify(Classify classify);
 
+    /**
+     * 删除分类
+     * @param id 分类id
+     * @return true 删除成功
+     */
+    boolean delClassify(String id,String type);
+
+    /**
+     * 根据一级分类id获取对应的二级分类的集合
+     * @param level1Id 一级分类id
+     * @return 集合
+     */
+    List<Classify> getLevel1IdChilren(String level1Id);
+
+    /**
+     * 获取所有的一级分类
+     * @return 一级分类集合
+     */
+    List<Classify> getLevel1();
+
+
+
 }

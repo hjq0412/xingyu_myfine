@@ -34,18 +34,20 @@
                             <th class="text-center">用户编号</th>
                             <th class="text-center">用户昵称</th>
                             <th class="text-center">用户积分</th>
+                            <th class="text-center">操作</th>
                         </tr>
                         </thead>
                         <#if totalIntegralList?exists >
-                        <#list totalIntegralList as item >
+                            <#list totalIntegralList as item >
                         <tbody>
                         <tr>
                             <td class="text-center">${item.id}</td>
                             <td class="text-center">${item.userNickName}</td>
                             <td class="text-center">${item.totalIntegral}</td>
+                            <td class="text-center"><a href="/integralvariation/${item.userNickName}/${item.id}/getVariationList.html">查看明细</a></td>
                         </tr>
                         </tbody>
-                        </#list>
+                            </#list>
                         </#if>
                     </table>
                 </div>
@@ -53,5 +55,5 @@
         </div>
     </div>
 
- <#--引入尾部导入-->
+<#--引入尾部导入-->
 <#include "common/tail.ftl">

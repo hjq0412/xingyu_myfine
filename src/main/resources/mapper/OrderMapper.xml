@@ -4,12 +4,14 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="cn.xingyu.myfine.pojo.Order">
-        <id column="id" property="id" />
-        <result column="userId" property="userId" />
-        <result column="addressId" property="addressId" />
-        <result column="createtime" property="createtime" />
-        <result column="orderNo" property="orderNo" />
-        <result column="orderType" property="orderType" />
+        <id column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="addressId" property="addressId"/>
+        <result column="createtime" property="createtime"/>
+        <result column="orderNo" property="orderNo"/>
+        <result column="orderType" property="orderType"/>
+        <result column="address" property="address"/>
+        <result column="userNickName" property="userNickName"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
@@ -17,12 +19,29 @@
         id, userId, addressId, createtime, orderNo, orderType
     </sql>
     <select id="getOrderListByPay" resultMap="BaseResultMap">
-        SELECT * from `order` WHERE id in(select orderId from orderdetail
-        where isPay=#{isPay})
+        select o.*, a.address as address, u.userNickName userNickName
+        from `order` o
+                JOIN `user` u on o.userId = u.id
+                JOIN address a on o.addressId = a.id
+                WHERE o.id in (select orderId from orderdetail where isPay = #{isPay})
     </select>
     <select id="getOrdreListByDelivery" resultMap="BaseResultMap">
-        SELECT * from `order` WHERE id in(select orderId from orderdetail
-        where isDelivery=#{isDelivery})
+        select o.*, a.address as address, u.userNickName userNickName
+        from `order` o
+                JOIN `user` u on o.userId = u.id
+                JOIN address a on o.addressId = a.id
+                WHERE o.id in (select orderId from orderdetail where isDelivery = #{isDelivery})
     </select>
+
+    <!--获取所有订单-->
+    <select id="getAllOrder" resultMap="BaseResultMap">
+        select o.*, a.address as address, u.userNickName userNickName
+        from `order` o
+                JOIN `user` u on o.userId = u.id
+                JOIN address a on o.addressId = a.id
+    </select>
+
+
+
 
 </mapper>

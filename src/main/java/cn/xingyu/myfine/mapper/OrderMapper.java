@@ -16,6 +16,8 @@ import java.util.List;
  */
 public interface OrderMapper extends BaseMapper<Order> {
 
+    List<Order> getAllOrder();
+
     /**
      * 查询未 付款订单
      * @return 未付款订单list
@@ -27,4 +29,7 @@ public interface OrderMapper extends BaseMapper<Order> {
      * @return
      */
     List<Order> getOrdreListByDelivery(@Param("isDelivery")Integer isDelivery);
+
+
+
 }

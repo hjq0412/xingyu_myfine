@@ -42,10 +42,6 @@ public class Product extends Model<Product> {
      */
     private String name;
 
-    /**
-     * 商品进价
-     */
-    private Double purchase;
 
     /**
      * 商品价格
@@ -102,6 +98,24 @@ public class Product extends Model<Product> {
     @TableField("buyCounts")
     private Long buyCounts;
 
+    /**
+     * 交易类型
+     */
+    @TableField("accountType")
+    private String accountType;
+
+    public String getFileAddress() {
+        return fileAddress;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
     public Long getId() {
         return id;
     }
@@ -130,13 +144,7 @@ public class Product extends Model<Product> {
     public void setName(String name) {
         this.name = name;
     }
-    public Double getPurchase() {
-        return purchase;
-    }
 
-    public void setPurchase(Double purchase) {
-        this.purchase = purchase;
-    }
     public Double getPrice() {
         return price;
     }
@@ -179,7 +187,7 @@ public class Product extends Model<Product> {
     public void setIsDiscount(Long isDiscount) {
         this.isDiscount = isDiscount;
     }
-    public String getFileAddress() {
+    public String getFileAddress(String message) {
         return fileAddress;
     }
 
@@ -220,7 +228,6 @@ public class Product extends Model<Product> {
         ", level1Id=" + level1Id +
         ", level2Id=" + level2Id +
         ", name=" + name +
-        ", purchase=" + purchase +
         ", price=" + price +
         ", description=" + description +
         ", size=" + size +

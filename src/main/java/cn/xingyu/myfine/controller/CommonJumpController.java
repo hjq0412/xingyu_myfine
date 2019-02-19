@@ -34,9 +34,7 @@ public class CommonJumpController {
     @RequestMapping("/loginOut.html")
     public String loginOut(HttpSession session) {
         session.removeAttribute("manager");
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        return "login";
+        return "redirect:toLogin.html";
     }
 
     /**
@@ -57,7 +55,5 @@ public class CommonJumpController {
     public  String toIntegralList(){
         return "IntegralList";
     }
-
-
 
 }
